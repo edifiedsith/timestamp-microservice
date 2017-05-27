@@ -2,6 +2,8 @@ var express=require('express')
 var app=express()
 var months=['January','February','March','April','May','June','July','August','September','October','November','December']
 
+app.set('port', (process.env.PORT || 8080))
+
 app.get('/', function (req, res) {
     
     res.send("Timestamp Microservice: Append Unix timestamp or natural language date to URL.")
@@ -24,6 +26,6 @@ function toNatural(d){
     return str;
 }
 
-app.listen(8080, function () {
-  console.log('Listening on port 8080.')
+app.listen(app.get('port'), function () {
+  console.log('Listening on port', app.get('port'))
 })
